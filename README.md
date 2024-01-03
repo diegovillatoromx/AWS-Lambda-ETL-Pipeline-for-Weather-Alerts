@@ -16,6 +16,7 @@ The significance of this project lies in its ability to provide real-time weathe
 - [Contact](#contact)
 
 ## Modular Code Overview
+
 ```bash
 my_project/
 ├── src/
