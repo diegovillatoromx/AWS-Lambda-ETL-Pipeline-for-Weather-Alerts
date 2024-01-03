@@ -15,7 +15,10 @@ The significance of this project lies in its ability to provide real-time weathe
 - [Contribution](#contribution)
 - [Contact](#contact)
 
-## Modular Code Overview
+
+
+
+## Modular Code Overview
 
 ```bash
 my_project/
