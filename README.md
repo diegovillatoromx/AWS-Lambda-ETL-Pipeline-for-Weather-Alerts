@@ -29,14 +29,11 @@ ETL-Pipeline-Weather/
 │   ├── data_loading/  # Load
 │   │   └── send_message.py  # Lambda script to send messages and verify delivery
 ├── infrastructure/
-│   ├── deploy_s3_raw_data_bucket.sh
-│   ├── deploy_s3_transformed_data_bucket.sh
-│   ├── deploy_s3_load_data_bucket.sh
-│   ├── create_iam_roles.sh  # Script to create all IAM roles
+│   ├── create_resources.sh  # Script to create both S3 buckets and IAM roles
 ├── config/
-│   ├── s3_raw_data_bucket_config.json
-│   ├── s3_transformed_data_bucket_config.json
-│   ├── s3_load_data_bucket_config.json
+│   ├── s3_raw_data_bucket_config.json  # Configuration for raw data S3 bucket
+│   ├── s3_transformed_data_bucket_config.json  # Configuration for transformed data S3 bucket
+│   ├── s3_load_data_bucket_config.json  # Configuration for load data S3 bucket
 │   ├── iam_data_ingestion_role.json  # IAM role for data fetching Lambda
 │   ├── iam_data_transformation_role.json  # IAM role for data transformation Lambda
 │   ├── iam_data_loading_role.json  # IAM role for data loading Lambda
@@ -44,5 +41,4 @@ ETL-Pipeline-Weather/
 ├── logs/
 │   ├── cloudwatch_logs.md  # Placeholder for logs or log instructions
 ├── README.md
-
 ```
