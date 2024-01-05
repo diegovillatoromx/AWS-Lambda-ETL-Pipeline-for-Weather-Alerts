@@ -19,7 +19,7 @@ The significance of this project lies in its ability to provide real-time weathe
 
 ## Modular Code Overview
 
-```bash
+```graphql
 ETL-Pipeline-Weather/
 ├── src/
 │   ├── data_ingestion/  # Extraction
@@ -33,7 +33,6 @@ ETL-Pipeline-Weather/
 ├── config/
 │   ├── s3_raw_data_bucket_config.json  # Configuration for raw data S3 bucket
 │   ├── s3_transformed_data_bucket_config.json  # Configuration for transformed data S3 bucket
-│   ├── s3_load_data_bucket_config.json  # Configuration for load data S3 bucket
 │   ├── iam_data_ingestion_role.json  # IAM role for data fetching Lambda
 │   ├── iam_data_transformation_role.json  # IAM role for data transformation Lambda
 │   ├── iam_data_loading_role.json  # IAM role for data loading Lambda
@@ -41,4 +40,5 @@ ETL-Pipeline-Weather/
 ├── logs/
 │   ├── cloudwatch_logs.md  # Placeholder for logs or log instructions
 ├── README.md
+
 ```
