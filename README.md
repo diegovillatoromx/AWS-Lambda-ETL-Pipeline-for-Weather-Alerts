@@ -20,25 +20,29 @@ The significance of this project lies in its ability to provide real-time weathe
 ## Modular Code Overview
 
 ```bash
-my_project/
+ETL-Pipeline-Weather/
 ├── src/
 │   ├── data_ingestion/  # Extraction
-│   │   └── data_fetcher.py  # Example script for data fetching
+│   │   └── data_fetcher.py  # Lambda script for data fetching
 │   ├── data_transformation/  # Transformation
-│   │   └── data_transformer.py  # Example script for data transformation
+│   │   └── data_transformer.py  # Lambda script for data transformation
 │   ├── data_loading/  # Load
-│   │   └── send_message.py  # Script to send messages and verify delivery
+│   │   └── send_message.py  # Lambda script to send messages and verify delivery
 ├── infrastructure/
 │   ├── deploy_s3_raw_data_bucket.sh
 │   ├── deploy_s3_transformed_data_bucket.sh
 │   ├── deploy_s3_load_data_bucket.sh
-│   ├── ...  # Other infrastructure deployment scripts
+│   ├── create_iam_roles.sh  # Script to create all IAM roles
 ├── config/
 │   ├── s3_raw_data_bucket_config.json
 │   ├── s3_transformed_data_bucket_config.json
 │   ├── s3_load_data_bucket_config.json
+│   ├── iam_data_ingestion_role.json  # IAM role for data fetching Lambda
+│   ├── iam_data_transformation_role.json  # IAM role for data transformation Lambda
+│   ├── iam_data_loading_role.json  # IAM role for data loading Lambda
 │   ├── ...  # Other configuration files
 ├── logs/
 │   ├── cloudwatch_logs.md  # Placeholder for logs or log instructions
 ├── README.md
+
 ```
