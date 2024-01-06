@@ -66,4 +66,66 @@ do
     fi
 done
 
+echo "Starting the creation of the Lambda function for data extraction..."
+
+# Load the configuration directory and file name from lambda_config.json
+CONFIG_FILE="lambda_config.json"
+CONFIG_DIR=$(jq -r '.ConfigDir' < "$CONFIG_FILE")
+
+# Load the Lambda function configuration from the .json file
+LAMBDA_DIR=$(jq -r '.LambdaDir' < "${CONFIG_DIR}/${CONFIG_FILE}")
+ZIP_FILE=$(jq -r '.ZipFile' < "${CONFIG_DIR}/${CONFIG_FILE}")
+FUNCTION_NAME=$(jq -r '.FunctionName' < "${CONFIG_DIR}/${CONFIG_FILE}")
+ROLE=$(jq -r '.Role' < "${CONFIG_DIR}/${CONFIG_FILE}")
+HANDLER=$(jq -r '.Handler' < "${CONFIG_DIR}/${CONFIG_FILE}")
+RUNTIME=$(jq -r '.Runtime' < "${CONFIG_DIR}/${CONFIG_FILE}")
+DESCRIPTION=$(jq -r '.Description' < "${CONFIG_DIR}/${CONFIG_FILE}")
+TIMEOUT=$(jq -r '.Timeout' < "${CONFIG_DIR}/${CONFIG_FILE}")
+MEMORY_SIZE=$(jq -r '.MemorySize' < "${CONFIG_DIR}/${CONFIG_FILE}")
+ENVIRONMENT=$(jq -r '.Environment' < "${CONFIG_DIR}/${CONFIG_FILE}" | jq -c .)
+
+# Function to check if the Lambda function already exists
+check_lambda_exists() {
+    if aws lambda get-function --function-name "$1" 2>/dev/null; then
+        echo "The Lambda function $1 already exists."
+        return 0
+    else
+        return 1
+    fi
+}
+
+echo "Preparing the deployment package..."
+
+# Changing to the Lambda function directory and creating the ZIP file
+cd "$LAMBDA_DIR"
+if [ ! -f "../${ZIP_FILE}" ]; then
+    zip -r9 "../${ZIP_FILE}" "data_fetcher.py"
+    echo "Created ZIP file: ${ZIP_FILE}"
+else
+    echo "ZIP file ${ZIP_FILE} already exists."
+fi
+
+# Returning to the original directory
+cd -
+
+# Check if the Lambda function already exists
+if ! check_lambda_exists "$FUNCTION_NAME"; then
+
+    # Using AWS CLI to create the Lambda function
+    aws lambda create-function \
+        --function-name "$FUNCTION_NAME" \
+        --runtime "$RUNTIME" \
+        --role "$ROLE" \
+        --handler "$HANDLER" \
+        --description "$DESCRIPTION" \
+        --timeout "$TIMEOUT" \
+        --memory-size "$MEMORY_SIZE" \
+        --environment "$ENVIRONMENT" \
+        --zip-file "fileb://${ZIP_FILE}"
+
+    echo "Lambda function $FUNCTION_NAME created successfully."
+else
+    echo "Moving on, $FUNCTION_NAME Lambda function already exists."
+fi
+
 # (Additional commands or configurations can be added here for each resource as needed)
