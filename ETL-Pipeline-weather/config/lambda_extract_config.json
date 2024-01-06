@@ -1,14 +1,18 @@
 {
     "FunctionName": "ExtractWeatherData",
     "Runtime": "python3.8",
-    "Role": "arn:aws:iam::[your-account-id]:role/LambdaRole-ExtractData",  // Replace with actual ARN of the IAM Role
-    "Handler": "lambda_function.lambda_handler",
+    "Role": "arn:aws:iam::[your-account-id]:role/LambdaRole-ExtractData",
+    "Handler": "data_ingestion/data_fetcher.lambda_handler",
     "Description": "Lambda function to extract weather data and store it in S3",
     "Timeout": 15,
     "MemorySize": 128,
     "Environment": {
         "Variables": {
-            "API_KEY_WAPI": "XxYyZzXxYyZzXxYyZzXxYyZzXxYyZzXxYyZz"  // Replace with actual API key
+            "API_KEY_WAPI": "XxYyZzXxYyZzXxYyZzXxYyZzXxYyZzXxYyZz"
         }
-    }
+    },
+    "LambdaDir": "ETL-Pipeline-Weather/src/data_ingestion",
+    "ZipFile": "lambda_function.zip",
+    "ConfigDir": "./",
+    "ConfigFile": "lambda_config.json"
 }
