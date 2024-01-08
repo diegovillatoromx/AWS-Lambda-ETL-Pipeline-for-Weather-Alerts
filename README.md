@@ -19,7 +19,7 @@ The significance of this project lies in its ability to provide real-time weathe
 
 ## Modular Code Overview
 
-```css
+```graphql
 ETL-Pipeline-Weather/
 ├── src/
 │   ├── data_ingestion/  # Extraction
