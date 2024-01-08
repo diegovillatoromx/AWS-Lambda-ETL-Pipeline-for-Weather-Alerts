@@ -4,7 +4,7 @@ This repository hosts a project for an ETL pipeline designed to extract, transfo
 
 The significance of this project lies in its ability to provide real-time weather alerts efficiently and automatically. Utilizing AWS Lambda's serverless architecture minimizes costs and maintenance needs while maximizing scalability and reliability. Accurate and timely weather alerts are vital for a wide range of applications, from personal safety and event planning to agriculture, logistics, and beyond. This system empowers users to anticipate and respond better to weather conditions, reducing risks and making informed decisions based on precise, up-to-date data.
 
-## Table of Contents 
+## Table of Contents  
  
 - [Description](#description)
 - [Architecture](#architecture)
