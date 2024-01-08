@@ -1,0 +1,21 @@
+{
+    "FunctionName": "DataTransformationFunction",
+    "Runtime": "python3.8",
+    "Role": "arn:aws:iam::[your-account-id]:role/LambdaRole-TransformationData",
+    "Handler": "data_transformation/data_transformer.lambda_handler",
+    "Description": "Lambda function to transform weather data",
+    "Timeout": 15,
+    "MemorySize": 256,
+    "Environment": {
+        "Variables": {
+            "SOURCE_BUCKET": "raw-data-weather-useast1-apiweather",
+            "DESTINATION_BUCKET": "transformed-data-weather-useast1-apiweather"
+        }
+    },
+    "Layers": [
+        "arn:aws:lambda:[region]:[account-id]:layer:[layer-name]:[version-number]"
+        // Replace with the actual ARN for the Pandas layer you want to use
+    ],
+    "LambdaDir": "ETL-Pipeline-Weather/src/data_transformation",
+    "ZipFile": "data_transformer.zip"
+}
