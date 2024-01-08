@@ -1,4 +1,4 @@
-# AWS-Lambda-ETL-Pipeline-for-Weather-Alerts 
+# AWS Lambda ETL-Pipeline-for-Weather-Alerts 
    
 This repository hosts a project for an ETL pipeline designed to extract, transform, and load weather data using AWS Lambda, aimed at delivering meteorological alerts through Twilio. The system periodically triggers, pulling data from reliable weather sources, transforming it for accurate insights, and loading it for real-time notification delivery to interested users. This serverless approach offers a scalable and efficient solution for weather monitoring and early warning, aiding individuals and organizations to stay informed and prepared for adverse weather conditions. Integration with CloudWatch ensures detailed logging of pipeline operations and facilitates monitoring and debugging of the system. This project is crucial for risk management and decision-making in weather-dependent activities, promoting safety and proactive planning.  
   
