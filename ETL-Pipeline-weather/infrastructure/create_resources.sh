@@ -128,4 +128,49 @@ else
     echo "Moving on, $FUNCTION_NAME Lambda function already exists."
 fi
 
-# (Additional commands or configurations can be added here for each resource as needed)
+echo "Starting the creation of the Lambda function for data transformation..."
+
+# Load the configuration from lambda_config.json
+CONFIG_FILE="lambda_config.json"
+
+# Load the Lambda function configuration from the .json file
+LAMBDA_DIR=$(jq -r '.LambdaDir' < "$CONFIG_FILE")
+ZIP_FILE=$(jq -r '.ZipFile' < "$CONFIG_FILE")
+FUNCTION_NAME=$(jq -r '.FunctionName' < "$CONFIG_FILE")
+# ... (rest of the configuration)
+
+ROOT_DIR=$(pwd) # Save the current directory
+
+echo "Preparing the deployment package..."
+
+# Changing to the Lambda function directory and creating the ZIP file
+cd "$LAMBDA_DIR"
+if [ ! -f "../${ZIP_FILE}" ]; then
+    zip -r9 "../${ZIP_FILE}" "data_transformer.py"
+    echo "Created ZIP file: ${ZIP_FILE}"
+else
+    echo "ZIP file ${ZIP_FILE} already exists."
+fi
+
+# Returning to the original directory
+cd "$ROOT_DIR"
+
+# Check if the Lambda function already exists
+if aws lambda get-function --function-name "$FUNCTION_NAME" 2>/dev/null; then
+    echo "The Lambda function $FUNCTION_NAME already exists."
+else
+    # If function does not exist, create it with the specified configurations
+    aws lambda create-function \
+        --function-name "$FUNCTION_NAME" \
+        --runtime "$RUNTIME" \
+        --role "$ROLE" \
+        --handler "$HANDLER" \
+        --description "$DESCRIPTION" \
+        --timeout "$TIMEOUT" \
+        --memory-size "$MEMORY_SIZE" \
+        --environment "$ENVIRONMENT" \
+        --layers "$LAYERS" \
+        --zip-file "fileb://${ZIP_FILE}"
+
+    echo "Lambda function $FUNCTION_NAME created successfully."
+fi
