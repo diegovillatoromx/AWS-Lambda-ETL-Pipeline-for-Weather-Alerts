@@ -31,14 +31,16 @@ ETL-Pipeline-Weather/
 ├── infrastructure/
 │   ├── create_resources.sh  # Script to create both S3 buckets and IAM roles
 ├── config/
+│   ├── iam_data_ingestion_role.json  # IAM role for data fetching Lambda
+│   ├── iam_data_loading_role.json  # IAM role for data loading Lambda
+│   ├── iam_data_transformation_role.json  # IAM role for data transformation Lambda
+│   ├── iam_role_config.json  # General IAM role configuration
+│   ├── lambda_extract_config.json  # Configuration for the data extraction Lambda function
+│   ├── lambda_sending_config.json  # Configuration for the data sending Lambda function
+│   ├── lambda_transform_config.json  # Configuration for the data transformation Lambda function
 │   ├── s3_raw_data_bucket_config.json  # Configuration for raw data S3 bucket
 │   ├── s3_transformed_data_bucket_config.json  # Configuration for transformed data S3 bucket
-│   ├── iam_data_ingestion_role.json  # IAM role for data fetching Lambda
-│   ├── iam_data_transformation_role.json  # IAM role for data transformation Lambda
-│   ├── iam_data_loading_role.json  # IAM role for data loading Lambda
-│   ├── ...  # Other configuration files
 ├── logs/
 │   ├── cloudwatch_logs.md  # Placeholder for logs or log instructions
-├── README.md
-
+└── README.md
 ```
