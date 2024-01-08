@@ -19,6 +19,8 @@ The significance of this project lies in its ability to provide real-time weathe
 
 ## Modular Code Overview
 
+In the ETL-Pipeline-Weather project, the codebase is organized into distinct modules, each serving a specific role in the overall ETL (Extraction, Transformation, Load) process. This modular approach enhances maintainability, scalability, and clarity. Below is an overview of each module:
+
 ```graphql
 ETL-Pipeline-Weather/
 ├── src/
@@ -44,3 +46,23 @@ ETL-Pipeline-Weather/
 │   ├── cloudwatch_logs.md  # Placeholder for logs or log instructions
 └── README.md
 ```
+
+`src/`: This directory is the core of the ETL process, containing Python scripts categorized by their roles in the ETL pipeline.
+
+`data_ingestion/`: The data_fetcher.py script resides here. Its primary function is to extract weather data from an external API and store it in the raw data S3 bucket (`'raw-data-weather-useast1-apiweather'`). This represents the Extraction phase of the ETL process.
+
+`data_transformation/`: Contains the data_transformer.py script, which is responsible for transforming the raw data. It reads data from the raw data S3 bucket, processes it (e.g., filtering, cleaning, aggregating), and stores the transformed data in another S3 bucket (`'transformed-data-weather-useast1-apiweather'`). This is the Transformation phase.
+
+`data_loading/`: Here, the send_message.py script is tasked with the Load phase. It retrieves the transformed data, possibly formats or summarizes it, and then sends it to a specified phone number using Twilio.
+
+`infrastructure/`: This directory contains infrastructure-as-code scripts.
+
+`create_resources.sh`: A shell script used for setting up necessary AWS resources like S3 buckets for storing data and IAM roles for securing access to AWS services.
+config/: Stores configuration files in JSON format, offering a centralized and structured way to manage various settings.
+
+Files like `iam_data_ingestion_role.json`, `lambda_extract_config.json`, and `s3_raw_data_bucket_config.json` define configurations for specific AWS resources such as IAM roles for Lambda functions and settings for S3 buckets.
+
+`logs/`: A designated place for storing logs or instructions related to AWS CloudWatch, aiding in monitoring and debugging.
+
+`README.md`: The main documentation file for the project, providing an overview, setup instructions, and other essential information.
+
