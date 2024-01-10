@@ -9,7 +9,7 @@ check_s3_bucket_exists() {
         echo "Bucket $1 already exists."
         return 0
     else
-        return 1
+        return 1 
     fi
 }
 
