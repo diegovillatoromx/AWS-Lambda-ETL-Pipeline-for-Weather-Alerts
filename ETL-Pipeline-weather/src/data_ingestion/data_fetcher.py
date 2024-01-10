@@ -1,4 +1,3 @@
-#data_fetcher.py
 import json
 import os
 import requests
