@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory where the configurations are
-CONFIG_DIR="../config"
+CONFIG_DIR="../config" 
 
 # Function to check if an S3 bucket exists
 check_s3_bucket_exists() {
