@@ -15,7 +15,9 @@ The significance of this project lies in its ability to provide real-time weathe
 - [Contact](#contact)
 
 
+## Arquitecture
 
+![image](https://github.com/diegovillatoromx/AWS-Lambda-ETL-Pipeline-for-Weather-Alerts/blob/main/ETL-API-WEATHER.png)
 
 ## Modular Code Overview
 
