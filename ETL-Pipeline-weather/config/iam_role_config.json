@@ -1,5 +1,0 @@
-// config/iam_role_config.json
-{
-  "iam_role_name": "AmazonFirehoseRole", 
-  "iam_role_description": "Allows EC2 instances to call Kinesis Firehose and CloudWatch"
-}
