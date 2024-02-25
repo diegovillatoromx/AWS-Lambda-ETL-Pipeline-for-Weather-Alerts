@@ -2,7 +2,7 @@
 # CloudWatch Logs for ETL-Pipeline-Weather
 
 ## Overview
-
+ 
 AWS CloudWatch Logs provide invaluable insights into the operation and performance of the AWS Lambda functions in the `ETL-Pipeline-Weather` project. This document serves as a guide to accessing, understanding, and utilizing these logs for monitoring and troubleshooting.
 
 ## Accessing Logs
