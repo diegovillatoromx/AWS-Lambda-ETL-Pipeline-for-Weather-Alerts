@@ -2,7 +2,7 @@ import os
 import json
 import boto3  
 import pandas as pd
-from twilio.rest import Client
+from twilio.rest import Client 
 
 def lambda_handler(event, context):
     # Load environment variables
