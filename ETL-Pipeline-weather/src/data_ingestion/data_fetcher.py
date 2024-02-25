@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 import boto3
 
-def get_date():
+def get_date(): 
     return datetime.now().strftime("%Y-%m-%d")
 
 def request_wapi(api_key, query):
