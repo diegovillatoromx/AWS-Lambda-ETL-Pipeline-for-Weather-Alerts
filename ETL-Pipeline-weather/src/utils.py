@@ -8,8 +8,6 @@ from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 
-
-
 def get_date():
 
     input_date = datetime.now()
