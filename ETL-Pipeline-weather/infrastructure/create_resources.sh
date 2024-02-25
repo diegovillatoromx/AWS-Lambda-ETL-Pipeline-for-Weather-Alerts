@@ -2,7 +2,7 @@
 
 # Define the directory where the configurations are
 CONFIG_DIR="../config" 
-
+ 
 # Function to check if an S3 bucket exists
 check_s3_bucket_exists() {
     if aws s3api head-bucket --bucket "$1" --region "$2" 2>/dev/null; then
