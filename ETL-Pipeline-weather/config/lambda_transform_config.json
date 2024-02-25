@@ -13,7 +13,7 @@
         }
     },
     "Layers": [
-        "arn:aws:lambda:[region]:[account-id]:layer:[layer-name]:[version-number]"
+        "arn:aws:lambda:[region]:[account-id]:layer:[layer-name]:[version-number]" 
         // Replace with the actual ARN for the Pandas layer you want to use
     ],
     "LambdaDir": "ETL-Pipeline-Weather/src/data_transformation",
