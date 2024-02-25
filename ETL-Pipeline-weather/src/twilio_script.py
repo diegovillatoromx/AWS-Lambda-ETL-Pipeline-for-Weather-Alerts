@@ -7,7 +7,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 import pandas as pd
 import requests
-from tqdm import tqdm
+from tqdm import tqdm 
 from datetime import datetime
 from utils import request_wapi,get_forecast,create_df,send_message,get_date
 
